@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import AddInterview from './components/AddInterview'
+import ListInterviews from './components/ListInterviews'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import DetailInterview from './components/DetailInterview'
+import Header from './components/Header'
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    <Router>
+      <Header />
+      <Route path='/create' component={AddInterview} exact/>
+      <Route path='/list' component={ListInterviews} exact/>
+      <Route path='/detail' component={DetailInterview} exact/>
+    </Router>
+
+  )
 }
 
-export default App;
+export default App
