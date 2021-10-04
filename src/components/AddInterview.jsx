@@ -1,6 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 import InterviewService from '../services/InterviewService';
+
+// adding CKEDITOR and HTMl Parser
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import  {CKEditor}  from '@ckeditor/ckeditor5-react';
+
+// html parser
+//import HtmlParser from 'react-html-parser';
+
+
 
 const AddInterview = () => {
 
@@ -52,11 +61,20 @@ const AddInterview = () => {
 
                             <Form.Group className="mb-3" controlId="questionSolution">
                                 <Form.Label>Question Solution</Form.Label>
-                                <Form.Control 
-                                    as="textarea"
-                                    value={questionSolution}
-                                    onChange={(e) => setQuestionSolution(e.target.value)}
-                                    rows={6} />
+                                
+                            
+                                <CKEditor
+                                    editor ={ClassicEditor}
+                                    data={questionSolution}
+                                    onChange={(e, editor) => {
+                                      const data = editor.getData()
+                                      setQuestionSolution(data)}
+                                    }
+                                
+                                />
+                              
+                               
+                    
                             </Form.Group>
 
                             
