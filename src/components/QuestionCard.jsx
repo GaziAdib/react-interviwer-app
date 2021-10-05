@@ -6,7 +6,7 @@ import '../App.css';
 const QuestionCard = ({ q }) => {
     return (
         <>
-        <Link className='question-card-link' to={'/detail'}>
+        <Link className='question-card-link' to={`/list/${q.key}/detail`}>
             <Card className='question-card shadow-sm m-4 p-4 rounded'>
                 <Card.Body>
                     <Card.Title>Question: {q.questionTitle}</Card.Title>
