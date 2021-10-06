@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import firebase from '@firebase/app-compat';
-import { Card } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css';
 import HtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
 const SolutionDetail = ({ match }) => {
 
@@ -44,14 +45,33 @@ const SolutionDetail = ({ match }) => {
 
     return (
         <>
-            <Card className='question-solution-detail-card shadow-sm m-4 p-4 rounded'>
-                <Card.Body>
-                    <Card.Title>Question: {questionTitle}</Card.Title>
-                    <Card.Text>Solution: { HtmlParser(questionSolution) }</Card.Text>
-                    <span>{questionType}</span><br />
-                    <span>{questionLanguage}</span>
-                </Card.Body>
-            </Card>
+        <Container>
+            <Row className="justify-content-left">
+                <Col md={6} sm={12} lg={4}>
+                    <Card className='question-solution-detail-card shadow-sm m-4 p-4 rounded'>
+                        <Card.Body>
+                            <Card.Title>Question: {questionTitle}</Card.Title>
+                            <hr />
+                            <Card.Text>Solution: { HtmlParser(questionSolution) }</Card.Text>
+                            <span>{questionType}</span><br />
+                            <span>{questionLanguage}</span>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+            </Row>
+
+            <Row className='justify-content-left m-2 p-2'>
+              
+                <Link to={`/list/${key}/update`}>
+                    <Button className='update-button mt-2 p-2 mb-2 btn btn-success'>Update</Button> 
+                </Link>
+
+            </Row>
+
+        
+        </Container>
+            
 
             
         </>

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import DetailInterview from './components/DetailInterview'
 import Header from './components/Header'
 import SolutionDetail from './components/SolutionDetail'
+import UpdateInterview from './components/UpdateInterview'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Route path='/list' component={ListInterviews} exact/>
       <Route path='/detail' component={DetailInterview} exact/>
       <Route path='/list/:key/detail' component={SolutionDetail} exact />
+      <Route path='/list/:key/update' component={UpdateInterview} exact />
     </Router>
 
   )

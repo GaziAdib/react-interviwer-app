@@ -16,3 +16,19 @@
     background-color: rgb(53, 8, 33);
     color: white;
 }
+
+.update-button{
+    background-color: blue !important;
+    color: aliceblue !important;
+    border-radius: 5px !important;
+    outline: auto;
+    margin-top: 5px !important;
+    margin-bottom: 2px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    padding: 2px !important;
+}
+
+.question-solution-detail-card:hover {
+    box-shadow: 4px 4px 3px 1px rgba(45, 255, 133, 0.4) !important;
+}
