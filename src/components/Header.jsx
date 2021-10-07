@@ -1,17 +1,18 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import '../App.css';
 
 
 const Header = () => {
 
-
+   
     return (
         <header>
-        <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+        <Navbar className="header" bg="dark" variant="dark" expand="lg" collapseOnSelect>
 
             <Container>
-                <LinkContainer to='/'>
+                <LinkContainer exact  to='/'>
                     <Navbar.Brand>React Interviwer</Navbar.Brand>
                 </LinkContainer>
                 
@@ -21,15 +22,15 @@ const Header = () => {
 
 
                     <Nav className="ml-auto">
-                        <LinkContainer to='/create'>
+                        <LinkContainer exact to='/create'>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> Create Question</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/'>
+                        <LinkContainer exact to='/'>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> All Question</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/detail'>
+                        <LinkContainer exact to='/detail'>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> Solutions</Nav.Link>
                         </LinkContainer>
 

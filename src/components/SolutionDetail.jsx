@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css';
 import HtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
-import InterviewService from '../services/InterviewService';
+import Loader from './Loader';
 
 
 
@@ -18,13 +18,12 @@ const SolutionDetail = ({ match, history }) => {
     const [questionSolution, setQuestionSolution] = useState('');
     const [questionType, setQuestionType] = useState('');
     const [questionLanguage, setQuestionLanguage] = useState('');
+    const [loading,setLoading] = useState(true);
     
 
 
     useEffect(() => {
-    
             const getDetailSolutionData =  () => {
-               
                 if (key != null) {
                     firebase.database().ref('/interviews').child(key).on('value', snapshot => {
                        
@@ -38,50 +37,45 @@ const SolutionDetail = ({ match, history }) => {
                         setQuestionSolution(q_solution)
                         setQuestionType(q_type)
                         setQuestionLanguage(q_language)
+                        setLoading(false)
 
-                      
                      })
                 } else {
                     setQuestionTitle('')
                     setQuestionSolution('')
                     setQuestionType('')
                     setQuestionLanguage('')
-                }
-                   
+                    setLoading(false)
+                }     
             }
 
             getDetailSolutionData()
         
-
-        
-
-
     }, [key])
 
 
-    console.log(history)
 
-
-    
     // delete Handler
     const deleteHander = () => {
         const secretPass = 'adib1204'
         if (window.confirm('Are you sure to delete ?')) {
 
             const password = prompt('Enter Password to Delete...')
+
             if(password === secretPass) {
                 firebase.database().ref('/interviews').child(key).remove().then(() => {
                     console.log('removed')
                     history.push('/')
+                    setLoading(false)
                 }).catch(e => {
                     console.log(e)
+                    setLoading(false)
                 })
             }
              else {
                  return 'password require to delete'
              }
              
-
         } else {
             return false
         }
@@ -89,9 +83,12 @@ const SolutionDetail = ({ match, history }) => {
     }
 
 
+
     return (
         <>
-        <Container>
+        {loading ? <Loader /> : (
+            <>
+            <Container>
             <Row className="justify-content-left">
                 <Col md={6} sm={12} lg={4}>
                     <Card className='question-solution-detail-card shadow-sm m-4 p-4 rounded'>
@@ -99,8 +96,8 @@ const SolutionDetail = ({ match, history }) => {
                             <Card.Title>Question: {questionTitle}</Card.Title>
                             <hr />
                             <Card.Text>Solution: { HtmlParser(questionSolution) }</Card.Text>
-                            <span>{questionType}</span><br />
-                            <span>{questionLanguage}</span>
+                            <span className={questionType === 'intermediate' ? "solution-question-type-intermediate" : "solution-question-type"}>{questionType}</span>
+                            <span className="solution-question-language">{questionLanguage}</span>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -109,20 +106,26 @@ const SolutionDetail = ({ match, history }) => {
 
             <Row className='justify-content-left m-2 p-2'>
               
+              <span>
                 <Link to={`/list/${key}/update`}>
-                   <span><Button variant="block outline text-light bg-primary" className='mt-2 p-3 mb-2'>Update</Button></span>
+                   <Button variant="block outline text-light bg-primary" className='mt-2 ml-2 mr-2 p-3 mb-2'>Update</Button>
                 </Link>
-                <span><Button  className='mt-2 p-3 mb-2' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button></span>
+                </span>
+              <span>
+              <Button  className='mt-2 ml-2 mr-2 p-3 mb-2' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button>
+            </span>  
+                
+              
+                
+                
 
             </Row>
 
-            
-
-        
         </Container>
             
-
-            
+            </>
+        )}
+        
         </>
     )
 }

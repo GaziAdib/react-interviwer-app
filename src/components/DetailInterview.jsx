@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import InterviewService from '../services/InterviewService'
-import SolutionCard from './SolutionCard'
+import SolutionAllCard from './SolutionAllCard'
+import Loader from './Loader'
 
 
 const DetailInterview = () => {
 
     const [solutions, setSolutions] = useState([])
+    const [loading,setLoading] = useState(true);
 
     const onDataChange = (items) => {
         let solutions = []
@@ -25,6 +27,7 @@ const DetailInterview = () => {
         });
 
         setSolutions(solutions);
+        setLoading(false)
     }
 
   
@@ -50,10 +53,10 @@ const DetailInterview = () => {
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Solutions</h2>
             <hr />
-
+                {loading && <Loader />}
                 {solutions.map(s => (
                     <Col md={12} lg={12} sm={12} key={s.key}>
-                        <SolutionCard s={s} />
+                        <SolutionAllCard s={s} />
                     </Col>
                 ))}
             </Row>

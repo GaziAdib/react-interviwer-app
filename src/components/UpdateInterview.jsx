@@ -5,6 +5,7 @@ import firebase from '@firebase/app-compat';
 // adding CKEDITOR and HTMl Parser
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import  {CKEditor}  from '@ckeditor/ckeditor5-react';
+import Loader from './Loader';
 
 
 const UpdateInterview = ({ match }) => {
@@ -18,6 +19,7 @@ const UpdateInterview = ({ match }) => {
     const [questionType, setQuestionType] = useState('');
     const [questionLanguage, setQuestionLanguage] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [loading,setLoading] = useState(true);
 
     useEffect(() => {
         const getEachKeyDetailData = () => {
@@ -33,6 +35,7 @@ const UpdateInterview = ({ match }) => {
                 setQuestionSolution(q_solution)
                 setQuestionType(q_type)
                 setQuestionLanguage(q_language)
+                setLoading(false)
                  
              })
         }
@@ -54,6 +57,7 @@ const UpdateInterview = ({ match }) => {
         InterviewService.update(key, data).then(() => {
             console.log('updated data')
             setSubmitted(true);
+            setLoading(true)
         }).catch(e => {
             console.log(e)
         })
@@ -62,7 +66,9 @@ const UpdateInterview = ({ match }) => {
 
     return <>
      
-     {submitted ? <h4>Form Submitted</h4> : (
+     {loading ? <Loader /> : (
+         <>
+         {submitted ? <h4>Form Submitted</h4> : (
          <Container>
          <h2 className='text-center mt-4 mb-4 text-primary'>Create Interview Question</h2>
          <hr />
@@ -138,6 +144,9 @@ const UpdateInterview = ({ match }) => {
      </Container>
     )}
  
+         </>
+     )}
+     
  </>
 }
 
