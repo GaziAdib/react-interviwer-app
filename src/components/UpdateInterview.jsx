@@ -5,7 +5,7 @@ import firebase from '@firebase/app-compat';
 // adding CKEDITOR and HTMl Parser
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import  {CKEditor}  from '@ckeditor/ckeditor5-react';
-import HtmlParser from 'react-html-parser';
+
 
 const UpdateInterview = ({ match }) => {
 

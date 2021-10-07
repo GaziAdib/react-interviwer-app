@@ -11,7 +11,7 @@ import  {CKEditor}  from '@ckeditor/ckeditor5-react';
 
 
 
-const AddInterview = () => {
+const AddInterview = ({ history }) => {
 
     const [questionTitle, setQuestionTitle] = useState('');
     const [questionSolution, setQuestionSolution] = useState('');
@@ -20,7 +20,8 @@ const AddInterview = () => {
     const [submitted, setSubmitted] = useState(false);
 
 
-    const CreateInterviewHandler = () => {
+    const CreateInterviewHandler = (event) => {
+        event.preventDefault();
 
         const data  = {
             questionTitle,
@@ -34,6 +35,11 @@ const AddInterview = () => {
         }).catch(e => {
             console.log(e)
         })
+
+            
+        history.push('/')
+        
+        
     };
 
 

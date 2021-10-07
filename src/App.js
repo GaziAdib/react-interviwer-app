@@ -13,8 +13,8 @@ const App = () => {
 
     <Router>
       <Header />
+      <Route path='/' component={ListInterviews} exact/>
       <Route path='/create' component={AddInterview} exact/>
-      <Route path='/list' component={ListInterviews} exact/>
       <Route path='/detail' component={DetailInterview} exact/>
       <Route path='/list/:key/detail' component={SolutionDetail} exact />
       <Route path='/list/:key/update' component={UpdateInterview} exact />

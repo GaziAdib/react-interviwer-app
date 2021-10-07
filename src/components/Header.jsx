@@ -11,7 +11,7 @@ const Header = () => {
         <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
 
             <Container>
-                <LinkContainer to='/list'>
+                <LinkContainer to='/'>
                     <Navbar.Brand>React Interviwer</Navbar.Brand>
                 </LinkContainer>
                 
@@ -25,7 +25,7 @@ const Header = () => {
                             <Nav.Link><i className='fas fa-shopping-cart'></i> Create Question</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/list'>
+                        <LinkContainer to='/'>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> All Question</Nav.Link>
                         </LinkContainer>
 

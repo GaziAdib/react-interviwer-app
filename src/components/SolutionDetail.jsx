@@ -4,8 +4,11 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css';
 import HtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
+import InterviewService from '../services/InterviewService';
 
-const SolutionDetail = ({ match }) => {
+
+
+const SolutionDetail = ({ match, history }) => {
 
     // by which key the detail will be shown
     const key = match.params.key;
@@ -19,28 +22,71 @@ const SolutionDetail = ({ match }) => {
 
 
     useEffect(() => {
+    
+            const getDetailSolutionData =  () => {
+               
+                if (key != null) {
+                    firebase.database().ref('/interviews').child(key).on('value', snapshot => {
+                       
+                        const q_title = snapshot.val().questionTitle
+                        const q_solution = snapshot.val().questionSolution
+                        const q_type = snapshot.val().questionType
+                        const q_language = snapshot.val().questionLanguage
+                        // set state value
+        
+                        setQuestionTitle(q_title)
+                        setQuestionSolution(q_solution)
+                        setQuestionType(q_type)
+                        setQuestionLanguage(q_language)
 
-        const getDetailSolutionData = () => {
-            firebase.database().ref('/interviews').child(key).on('value', snapshot => {
-                const q_title =  snapshot.val().questionTitle
-                const q_solution =  snapshot.val().questionSolution
-                const q_type =  snapshot.val().questionType
-                const q_language =  snapshot.val().questionLanguage
+                      
+                     })
+                } else {
+                    setQuestionTitle('')
+                    setQuestionSolution('')
+                    setQuestionType('')
+                    setQuestionLanguage('')
+                }
+                   
+            }
 
-                // set state value
+            getDetailSolutionData()
+        
 
-                setQuestionTitle(q_title)
-                setQuestionSolution(q_solution)
-                setQuestionType(q_type)
-                setQuestionLanguage(q_language)
-                 
-             })
-        }
-
-        getDetailSolutionData()
+        
 
 
     }, [key])
+
+
+    console.log(history)
+
+
+    
+    // delete Handler
+    const deleteHander = () => {
+        const secretPass = 'adib1204'
+        if (window.confirm('Are you sure to delete ?')) {
+
+            const password = prompt('Enter Password to Delete...')
+            if(password === secretPass) {
+                firebase.database().ref('/interviews').child(key).remove().then(() => {
+                    console.log('removed')
+                    history.push('/')
+                }).catch(e => {
+                    console.log(e)
+                })
+            }
+             else {
+                 return 'password require to delete'
+             }
+             
+
+        } else {
+            return false
+        }
+        
+    }
 
 
     return (
@@ -64,10 +110,13 @@ const SolutionDetail = ({ match }) => {
             <Row className='justify-content-left m-2 p-2'>
               
                 <Link to={`/list/${key}/update`}>
-                    <Button className='update-button mt-2 p-2 mb-2 btn btn-success'>Update</Button> 
+                   <span><Button variant="block outline text-light bg-primary" className='mt-2 p-3 mb-2'>Update</Button></span>
                 </Link>
+                <span><Button  className='mt-2 p-3 mb-2' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button></span>
 
             </Row>
+
+            
 
         
         </Container>

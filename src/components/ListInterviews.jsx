@@ -7,21 +7,29 @@ const ListInterviews = () => {
 
     const [questions, setQuestions] = useState([])
 
-    const onDataChange = (items) => {
-        let questions = []
-
-        items.forEach((item) => {
-            let key = item.key;
-            let data = item.val();
-            questions.push({
-                key: key,
-                questionTitle: data.questionTitle
-            });
-
-        });
-
-        setQuestions(questions);
-    }
+    
+        const onDataChange = (items) => {
+            let questions = []
+    
+           if(items !== null) {
+                items.forEach((item) => {
+                    if(item.key !== null) {
+                        let key = item.key;
+                        let data = item.val();
+        
+                        questions.push({
+                                key: key,
+                                questionTitle: data.questionTitle
+                        });
+                        
+                    }
+                });
+           }
+    
+            setQuestions(questions);
+        }
+    
+    
 
   
 
@@ -36,6 +44,16 @@ const ListInterviews = () => {
 
         getAllQuestion()
     },[])
+
+
+
+    // // get Data again after delete prop
+    // const getMyData = () => {
+    //     InterviewService.getAll().on("value", onDataChange);
+    //     return () => {
+    //         InterviewService.getAll().off("value", onDataChange)
+    //     }
+    // }
 
    
 
