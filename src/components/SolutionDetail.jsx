@@ -90,7 +90,7 @@ const SolutionDetail = ({ match, history }) => {
             <>
             <Container>
             <Row className="justify-content-left">
-                <Col md={6} sm={12} lg={4}>
+                <Col md={6} sm={12} lg={8}>
                     <Card className='question-solution-detail-card shadow-sm m-4 p-4 rounded'>
                         <Card.Body>
                             <Card.Title>Question: {questionTitle}</Card.Title>

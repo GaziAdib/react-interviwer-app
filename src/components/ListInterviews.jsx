@@ -12,30 +12,28 @@ const ListInterviews = () => {
     
         const onDataChange = (items) => {
             let questions = []
-    
            if(items !== null) {
                 items.forEach((item) => {
                     if(item.key !== null) {
                         let key = item.key;
                         let data = item.val();
-        
+                        // push data into question array
                         questions.push({
                                 key: key,
                                 questionTitle: data.questionTitle,
                                 questionType: data.questionType
                         });
+                        // sort based on question difficulty 
+                        questions.sort((a, b) => b.questionType - a.questionType ? 1 : -1)
                         
                     }
                 });
            }
-    
             setQuestions(questions);
             setLoading(false)
         }
     
-    
 
-  
 
     useEffect(() => {
         const getAllQuestion = () => {
