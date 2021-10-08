@@ -1,11 +1,11 @@
 import React from 'react'
-import AddInterview from './components/AddInterview'
-import ListInterviews from './components/ListInterviews'
+import AddInterview from './screens/AddInterview'
+import ListInterviews from './screens/ListInterviews'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import DetailInterview from './components/DetailInterview'
+import DetailInterview from './screens/DetailInterview'
 import Header from './components/Header'
-import SolutionDetail from './components/SolutionDetail'
-import UpdateInterview from './components/UpdateInterview'
+import SolutionDetail from './screens/SolutionDetail'
+import UpdateInterview from './screens/UpdateInterview'
 
 
 const App = () => {

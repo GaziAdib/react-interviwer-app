@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css';
 import HtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
-import Loader from './Loader';
+import Loader from '../components/Loader';
 
 
 

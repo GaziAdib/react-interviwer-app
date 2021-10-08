@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import InterviewService from '../services/InterviewService'
-import SolutionAllCard from './SolutionAllCard'
-import Loader from './Loader'
+import SolutionAllCard from '../components/SolutionAllCard'
+import Loader from '../components/Loader'
 
 
 const DetailInterview = () => {

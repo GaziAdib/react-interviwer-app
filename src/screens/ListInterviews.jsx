@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import InterviewService from '../services/InterviewService'
-import Loader from './Loader'
-import QuestionCard from './QuestionCard'
+import Loader from '../components/Loader'
+import QuestionCard from '../components/QuestionCard'
 
 const ListInterviews = () => {
 
