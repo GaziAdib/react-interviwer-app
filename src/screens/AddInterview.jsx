@@ -38,9 +38,7 @@ const AddInterview = ({ history }) => {
             console.log(e)
         })
 
-            
         history.push('/')
-        
         
     };
 
@@ -58,7 +56,7 @@ const AddInterview = ({ history }) => {
 
                     <Form onSubmit={CreateInterviewHandler}>
 
-                            <Form.Group className="mb-3" controlId="questionTitle">
+                            <Form.Group className="mb-2 py-2 mt-2" controlId="questionTitle">
                                 <Form.Label>Question Title</Form.Label>
                                 <Form.Control
                                  type="text"
@@ -67,13 +65,13 @@ const AddInterview = ({ history }) => {
                                  />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="questionSolution">
+                            <Form.Group className="mb-3 py-2 mt-2" controlId="questionSolution">
                                 <Form.Label>Question Solution</Form.Label>
                                 
                      
                                 <CKEditor
                                     config={ {
-                                        innerHeight:'200px'
+                                        innerHeight:'400px'
                                         } }
                                     editor={ClassicEditor}
                                     data={questionSolution}
@@ -92,7 +90,7 @@ const AddInterview = ({ history }) => {
 
                             
 
-                            <Form.Group className='mb-2 mt-2'  aria-label="questionType">
+                            <Form.Group className='mb-2 mt-2 pt-2'  aria-label="questionType">
                                 <Form.Label>Question Type</Form.Label>
                                 <Form.Control as='select' value={questionType} onChange={(e) => setQuestionType(e.target.value)}>
                                     <option value=''>Select...</option>
@@ -104,7 +102,7 @@ const AddInterview = ({ history }) => {
                                 
                         
 
-                            <Form.Group className='mb-2 mt-2'  aria-label="questionLanguage">
+                            <Form.Group className='mb-2 mt-2 pt-2'  aria-label="questionLanguage">
                                 <Form.Label>Question Language</Form.Label>
                                 <Form.Control as='select' value={questionLanguage} onChange={(e) => setQuestionLanguage(e.target.value)}>
                                     <option value=''>Select...</option>

@@ -31,17 +31,13 @@ const Header = () => {
                         </LinkContainer>
 
                         <LinkContainer exact to='/detail'>
-                            <Nav.Link><i className='fas fa-shopping-cart'></i> Solutions</Nav.Link>
+                            <Nav.Link><i className='fas fa-shopping-cart'></i> All Solutions</Nav.Link>
                         </LinkContainer>
 
                       
 
 
-                  
-                        
-                        
-
-        
+                
                         </Nav>
                 </Navbar.Collapse>
             </Container>
