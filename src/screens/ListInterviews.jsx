@@ -23,8 +23,8 @@ const ListInterviews = () => {
                                 questionTitle: data.questionTitle,
                                 questionType: data.questionType
                         });
-                        // sort based on question difficulty 
-                        questions.sort((a, b) => b.questionType - a.questionType ? 1 : -1)
+                        // // sort based on question difficulty 
+                        // questions.sort((a, b) => a.questionType - b.questionType ? 1 : -1)
                         
                     }
                 });

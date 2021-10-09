@@ -8,7 +8,7 @@ import  {CKEditor}  from '@ckeditor/ckeditor5-react';
 import Loader from '../components/Loader';
 
 
-const UpdateInterview = ({ match }) => {
+const UpdateInterview = ({ match, history }) => {
 
     // pass key of which one to update
 
@@ -45,7 +45,9 @@ const UpdateInterview = ({ match }) => {
 
     // updateHandler On Button click
 
-    const UpdateInterviewHandler = () => {
+    const UpdateInterviewHandler = (e) => {
+
+        e.preventDefault();
 
         const data  = {
             questionTitle,
@@ -55,9 +57,11 @@ const UpdateInterview = ({ match }) => {
         }
 
         InterviewService.update(key, data).then(() => {
+            history.push('/')
             console.log('updated data')
             setSubmitted(true);
-            setLoading(true)
+            setLoading(false)
+
         }).catch(e => {
             console.log(e)
         })

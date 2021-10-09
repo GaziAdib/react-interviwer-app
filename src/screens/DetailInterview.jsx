@@ -9,6 +9,12 @@ const DetailInterview = () => {
 
     const [solutions, setSolutions] = useState([])
     const [loading,setLoading] = useState(true);
+    // const [light, setLight] = useState(false);
+    // const [dark, setDark] = useState(false);
+    // const [textColor, setTextColor] = useState('');
+    // const [bgColor, setBgColor] = useState('');
+
+    
 
     const onDataChange = (items) => {
         let solutions = []
@@ -44,19 +50,43 @@ const DetailInterview = () => {
         getAllSolution()
     },[])
 
+    // const setToDarkMode = () => {
+    //     setDark(true)
+    //     setLight(false)
+    //     if(dark === true) {
+    //         setBgColor('bg-dark')
+    //         setTextColor('text-light')
+    //     }
+    // }
+
+    // const setToLightMode = () => {
+    //     setDark(false)
+    //     setLight(true)
+    //     if(light === true)
+    //         setBgColor('bg-light')
+    //         setTextColor('text-dark')
+    // }
+
+    //className={light ? textColor && bgColor : 'bg-dark text-light'}
+
+   
+
    
 
 
     return (
         <>
         <Container>
+            {/* <Button onClick={setToLightMode}>Light</Button>
+            <Button onClick={setToDarkMode}>Dark</Button> */}
+            {/* <h2 className={light ? textColor && bgColor : 'bg-dark text-light'}>text dark and light</h2> */}
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Solutions</h2>
             <hr />
                 {loading && <Loader />}
                 {solutions.map(s => (
                     <Col md={12} lg={12} sm={12} key={s.key}>
-                        <SolutionAllCard s={s} />
+                        <SolutionAllCard  s={s} />
                     </Col>
                 ))}
             </Row>

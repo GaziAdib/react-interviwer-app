@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 import InterviewService from '../services/InterviewService';
 
+
 // adding CKEDITOR and HTMl Parser
+
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import  {CKEditor}  from '@ckeditor/ckeditor5-react';
+import { CKEditor } from '@ckeditor/ckeditor5-react'
 
 // html parser
 //import HtmlParser from 'react-html-parser';
@@ -52,7 +54,7 @@ const AddInterview = ({ history }) => {
             <hr />
             <Row className='justify-content-center'>
 
-                <Col md={6} sm={12}>
+                <Col md={8} lg={8} sm={10} xs={10}>
 
                     <Form onSubmit={CreateInterviewHandler}>
 
@@ -68,19 +70,24 @@ const AddInterview = ({ history }) => {
                             <Form.Group className="mb-3" controlId="questionSolution">
                                 <Form.Label>Question Solution</Form.Label>
                                 
-                            
+                     
                                 <CKEditor
-                                    editor ={ClassicEditor}
+                                    config={ {
+                                        innerHeight:'200px'
+                                        } }
+                                    editor={ClassicEditor}
                                     data={questionSolution}
-                                    onChange={(e, editor) => {
-                                      const data = editor.getData()
-                                      setQuestionSolution(data)}
-                                    }
-                                
-                                />
-                              
-                               
-                    
+                                    onChange = {(e, editor) => {
+                                        const data = editor.getData()
+                                        setQuestionSolution(data)
+                                    }}
+                                    onBlur={ ( e, editor ) => {
+                                        console.log( 'Blur.', editor );
+                                    } }
+                                        
+                                        />
+                  
+
                             </Form.Group>
 
                             

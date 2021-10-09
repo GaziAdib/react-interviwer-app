@@ -1,7 +1,7 @@
 .header{
     height: auto;
     font-weight: 600;
-    min-height: 100px;
+    min-height: 65px;
     box-shadow: 4px 4px 3px 1px rgba(38, 34, 255, 0.753);
 }
 
@@ -22,32 +22,31 @@
     
 }
 
+@media only screen and (max-width: 500px) {
+    .question-card span {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+
 .question-card:hover{
     background-color: rgb(36, 7, 63);
     color: white;
     
 }
 
-.update-button{
-    background-color: blue !important;
-    color: aliceblue !important;
-    border-radius:10px !important;
-    margin-top: 3px !important;
-    margin-bottom: 2px !important;
-    margin-left: 4px !important;
-    margin-right: 4px !important;
-   
+.question-card {
+    border-radius: 5px !important;
+    border-bottom: 3px solid green !important;
+    border-left: 3px solid rgb(185, 1, 60) !important;
 }
 
-.delete-button {
-    color: aliceblue !important;
-    border-radius: 10px !important;
-    margin-top: 3px !important;
-    margin-bottom: 2px !important;
-    margin-left: 4px !important;
-    margin-right: 4px !important;
-    
+.solution-detail-text {
+    font-size: 21px;
 }
+
+
 
 .question-solution-detail-card:hover {
     box-shadow: 4px 4px 3px 1px rgba(45, 255, 133, 0.4) !important;
@@ -106,3 +105,24 @@
     margin-left: 1px;
 
 }
+
+footer{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:rgb(34, 34, 34) !important;
+    margin-top: auto;
+
+}
+
+#root {
+    background-color: rgba(251, 247, 255, 0.883);
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+
+
+

@@ -6,6 +6,8 @@ import DetailInterview from './screens/DetailInterview'
 import Header from './components/Header'
 import SolutionDetail from './screens/SolutionDetail'
 import UpdateInterview from './screens/UpdateInterview'
+//footer
+import Footer from './components/Footer';
 
 
 const App = () => {
@@ -18,7 +20,10 @@ const App = () => {
       <Route path='/detail' component={DetailInterview} exact/>
       <Route path='/list/:key/detail' component={SolutionDetail} exact />
       <Route path='/list/:key/update' component={UpdateInterview} exact />
+      <Footer />
     </Router>
+
+
 
   )
 }

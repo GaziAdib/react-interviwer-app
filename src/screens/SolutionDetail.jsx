@@ -90,36 +90,43 @@ const SolutionDetail = ({ match, history }) => {
             <>
             <Container>
             <Row className="justify-content-left">
-                <Col md={6} sm={12} lg={8}>
+                <Col md={8} sm={10} lg={10} xs={10}>
                     <Card className='question-solution-detail-card shadow-sm m-4 p-4 rounded'>
                         <Card.Body>
                             <Card.Title>Question: {questionTitle}</Card.Title>
                             <hr />
-                            <Card.Text>Solution: { HtmlParser(questionSolution) }</Card.Text>
+                            <Card.Text className='solution-detail-text'>Solution: { HtmlParser(questionSolution) }</Card.Text>
+                            <br />
                             <span className={questionType === 'intermediate' ? "solution-question-type-intermediate" : "solution-question-type"}>{questionType}</span>
                             <span className="solution-question-language">{questionLanguage}</span>
                         </Card.Body>
                     </Card>
                 </Col>
 
-            </Row>
-
-            <Row className='justify-content-left m-2 p-2'>
+                <Col md={4} lg={2} sm={2} xs={2}>
+                <Row className='justify-content-center mt-5 mr-5'>
               
               <span>
-                <Link to={`/list/${key}/update`}>
-                   <Button variant="block outline text-light bg-primary" className='mt-2 ml-2 mr-2 p-3 mb-2'>Update</Button>
-                </Link>
-                </span>
-              <span>
-              <Button  className='mt-2 ml-2 mr-2 p-3 mb-2' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button>
-            </span>  
-                
+              <Link to={`/list/${key}/update`}>
+                    <Button variant="block-outline bg-dark text-light" className='mt-2 ml-2 mr-2 p-2 mb-1'>Update</Button>
+                    </Link>
+              </span>
+             
+                   
+               <span>
+               <Button  className='mt-2 ml-2 mr-2 p-2 mb-1' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button>
+               </span>
+               
               
+            
                 
-                
+        
+            </Row>
+                </Col>
 
             </Row>
+
+          
 
         </Container>
             
