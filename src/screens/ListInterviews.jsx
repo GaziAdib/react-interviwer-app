@@ -51,7 +51,7 @@ const ListInterviews = () => {
 
     return (
         <>
-        <Container>
+        <Container className='mb-5'>
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Questions</h2>
             <hr />
@@ -59,7 +59,7 @@ const ListInterviews = () => {
                 {loading && <Loader />}
               
                 {questions.map(q => (
-                    <Col md={12} lg={12} sm={12} key={q.key}>
+                    <Col md={10} lg={12} sm={12} xs={12} key={q.key}>
                         <QuestionCard q={q} />
                     </Col>
                 ))}

@@ -20,23 +20,24 @@ const Footer = () => {
                     <Col md={4} lg={4} sm={4}>
                         <p className='text-light mt-2 p-2'>developed By <b>GaziAdib</b></p>
                     </Col>
-                    <Col md={4} lg={4} sm={4}>
+                    <Col md={12} lg={4} sm={4}>
                         <Row className='mt-2 p-2'>
-                            <Col md={2} lg={2} sm={12}>
-                                <a className="social-link-gmail" href="https://www.gmail.com" target='_blank'><FontAwesomeIcon style={{ color: 'yellow' }} icon={faEnvelope} /></a>
+                            <Col md={3} lg={2} sm={12}>
+                                <a className="social-link-gmail" href="https://www.gmail.com" target='_blank' rel="noreferrer"><FontAwesomeIcon style={{ color: 'yellow' }} icon={faEnvelope} /></a>
                             </Col>
 
-                            <Col md={2} lg={2} sm={12}>
-                                <a className="social-link-youtube" href="https://www.youtube.com/c/GreatAdib/featured" target='_blank'><FontAwesomeIcon style={{ color: 'red' }} icon={faYoutube} /></a>
+                            <Col md={3} lg={2} sm={12}>
+                                <a className="social-link-youtube" href="https://www.youtube.com/c/GreatAdib/featured" target='_blank' rel="noreferrer"><FontAwesomeIcon style={{ color: 'red' }} icon={faYoutube} /></a>
                             </Col>
 
-                            <Col md={2} lg={2} sm={12}>
-                                <a className="social-link-facebook" href="https://www.facebook.com/profile.php?id=100008158750938" target='_blank'> <FontAwesomeIcon style={{ color: 'lightblue' }} icon={faFacebook} /></a>
+                            <Col md={3} lg={2} sm={12}>
+                                <a className="social-link-facebook" href="https://www.facebook.com/profile.php?id=100008158750938" target='_blank' rel="noreferrer"> <FontAwesomeIcon style={{ color: 'lightblue' }} icon={faFacebook} /></a>
                             </Col>
 
-                            <Col md={2} lg={2} sm={12}>
-                                <a  href="https://github.com/GaziAdib" target='_blank'> <FontAwesomeIcon style={{ color: 'white' }} icon={faGithub} /></a>
+                            <Col md={3} lg={2} sm={12}>
+                                <a  href="https://github.com/GaziAdib" target='_blank' rel="noreferrer"> <FontAwesomeIcon style={{ color: 'white' }} icon={faGithub} /></a>
                             </Col>
+
 
                         </Row>
                     </Col>

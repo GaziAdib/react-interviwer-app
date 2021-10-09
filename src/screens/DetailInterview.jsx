@@ -76,7 +76,7 @@ const DetailInterview = () => {
 
     return (
         <>
-        <Container>
+        <Container className='mb-5'>
             {/* <Button onClick={setToLightMode}>Light</Button>
             <Button onClick={setToDarkMode}>Dark</Button> */}
             {/* <h2 className={light ? textColor && bgColor : 'bg-dark text-light'}>text dark and light</h2> */}

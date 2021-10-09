@@ -6,9 +6,6 @@ const getAll = () => {
     return db;
 };
 
-// const getDataByKey = (key) => {
-//     return db.child(key)
-// }
 
 const create = (data) => {
     return db.push(data)
