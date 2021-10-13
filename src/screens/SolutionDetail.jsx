@@ -6,16 +6,24 @@ import HtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { jsPDF } from 'jspdf';
+import { useParams, useHistory } from 'react-router-dom'
 
 
 
 
+const SolutionDetail = () => {
 
-
-const SolutionDetail = ({ match, history }) => {
-
+    //{ match, history }
     // by which key the detail will be shown
-    const key = match.params.key;
+    //const key = match.params.key;
+
+    // new way params
+
+    const { key } = useParams()
+
+    const history = useHistory()
+
+    // console.log(history.location.key, history.location.pathname, history.location.search)
 
     // states to show values in JSX an set database data
     const [questionTitle, setQuestionTitle] = useState('');
@@ -26,23 +34,27 @@ const SolutionDetail = ({ match, history }) => {
 
 
     useEffect(() => {
-            const getDetailSolutionData =  () => {
+            const getDetailSolutionData = async () => {
                 if (key != null) {
-                    firebase.database().ref('/interviews').child(key).on('value', snapshot => {
-                       
-                        const q_title = snapshot.val().questionTitle
-                        const q_solution = snapshot.val().questionSolution
-                        const q_type = snapshot.val().questionType
-                        const q_language = snapshot.val().questionLanguage
-                        // set state value
-        
-                        setQuestionTitle(q_title)
-                        setQuestionSolution(q_solution)
-                        setQuestionType(q_type)
-                        setQuestionLanguage(q_language)
-                        setLoading(false)
+                   await firebase.database().ref('/interviews').child(key).on('value', snapshot => {
+                        
+                        if(snapshot.exists()) {
+
+                            const q_title = snapshot.val().questionTitle
+                            const q_solution = snapshot.val().questionSolution
+                            const q_type = snapshot.val().questionType
+                            const q_language = snapshot.val().questionLanguage
+
+                            // set state value
+                            setQuestionTitle(q_title)
+                            setQuestionSolution(q_solution)
+                            setQuestionType(q_type)
+                            setQuestionLanguage(q_language)
+                            setLoading(false)
+                        }
 
                      })
+
                 } else {
                     setQuestionTitle('')
                     setQuestionSolution('')
@@ -59,14 +71,14 @@ const SolutionDetail = ({ match, history }) => {
 
 
     // delete Handler
-    const deleteHander = () => {
+    const deleteHander = async () => {
         const secretPass = 'adib1204'
         if (window.confirm('Are you sure to delete ?')) {
 
             const password = prompt('Enter Password to Delete...')
 
             if(password === secretPass) {
-                firebase.database().ref('/interviews').child(key).remove().then(() => {
+               await firebase.database().ref('/interviews').child(key).remove().then(() => {
                     console.log('removed')
                     history.push('/')
                     setLoading(false)

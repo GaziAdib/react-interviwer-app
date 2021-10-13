@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 import InterviewService from '../services/InterviewService';
+import { useHistory } from 'react-router-dom';
 
 
 // adding CKEDITOR and HTMl Parser
@@ -13,7 +14,10 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 
 
 
-const AddInterview = ({ history }) => {
+const AddInterview = () => {
+
+    // to redirect after create
+    const history = useHistory()
 
     const [questionTitle, setQuestionTitle] = useState('');
     const [questionSolution, setQuestionSolution] = useState('');

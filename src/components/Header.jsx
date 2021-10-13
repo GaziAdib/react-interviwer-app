@@ -22,15 +22,15 @@ const Header = () => {
 
 
                     <Nav className="ml-auto">
-                        <LinkContainer exact to='/create'>
+                        <LinkContainer exact to='/create' activeStyle={{ fontStyle: 'bold', color: 'lightgreen' }}>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> Create Question</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer exact to='/'>
+                        <LinkContainer exact to='/' activeStyle={{ fontStyle: 'bold', color: 'lightgreen' }}>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> All Question</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer exact to='/detail'>
+                        <LinkContainer exact to='/detail' activeStyle={{ fontStyle: 'bold', color: 'lightgreen' }}>
                             <Nav.Link><i className='fas fa-shopping-cart'></i> All Solutions</Nav.Link>
                         </LinkContainer>
 

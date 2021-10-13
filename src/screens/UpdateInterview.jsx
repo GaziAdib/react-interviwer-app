@@ -6,13 +6,18 @@ import firebase from '@firebase/app-compat';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import  {CKEditor}  from '@ckeditor/ckeditor5-react';
 import Loader from '../components/Loader';
+import { useParams, useHistory } from 'react-router-dom'
 
 
-const UpdateInterview = ({ match, history }) => {
+const UpdateInterview = () => {
 
     // pass key of which one to update
+    const { key } = useParams();
 
-    const key = match.params.key
+    // redirect after button click
+    const history = useHistory();
+    
+   // console.log(history.location.key, history.location.pathname, history.location.search)
 
     const [questionTitle, setQuestionTitle] = useState('');
     const [questionSolution, setQuestionSolution] = useState('');

@@ -12,9 +12,9 @@ const ListInterviews = () => {
     
         const onDataChange = (items) => {
             let questions = []
-           if(items !== null) {
+           if(items.exists()) {
                 items.forEach((item) => {
-                    if(item.key !== null) {
+                    if(item.key) {
                         let key = item.key;
                         let data = item.val();
                         // push data into question array
@@ -36,8 +36,8 @@ const ListInterviews = () => {
 
 
     useEffect(() => {
-        const getAllQuestion = () => {
-            InterviewService.getAll().on("value", onDataChange);
+        const getAllQuestion = async () => {
+            await InterviewService.getAll().on("value", onDataChange);
 
             return () => {
                 InterviewService.getAll().off("value", onDataChange)
