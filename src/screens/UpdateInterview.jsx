@@ -43,28 +43,35 @@ const UpdateInterview = ({ match, history }) => {
         getEachKeyDetailData()
     },[key])
 
-    // updateHandler On Button click
 
+
+
+    // updateHandler On Button click
     const UpdateInterviewHandler = (e) => {
 
         e.preventDefault();
 
-        const data  = {
-            questionTitle,
-            questionSolution,
-            questionType,
-            questionLanguage
+        if (questionTitle !== '' && questionSolution !== '' && questionType !== '' && questionLanguage !== '') { 
+
+            const data  = {
+                questionTitle,
+                questionSolution,
+                questionType,
+                questionLanguage
+            }
+    
+            InterviewService.update(key, data).then(() => {
+                console.log('updated data')
+                setSubmitted(true);
+                setLoading(false)
+    
+            }).catch(e => {
+                console.log(e)
+            })
+    
+            history.push('/')
         }
 
-        InterviewService.update(key, data).then(() => {
-            history.push('/')
-            console.log('updated data')
-            setSubmitted(true);
-            setLoading(false)
-
-        }).catch(e => {
-            console.log(e)
-        })
     };
 
 
@@ -85,35 +92,42 @@ const UpdateInterview = ({ match, history }) => {
                          <Form.Group className="mb-3" controlId="questionTitle">
                              <Form.Label>Question Title</Form.Label>
                              <Form.Control
+                              required
                               type="text"
                               value={questionTitle}
                               onChange={(e) => setQuestionTitle(e.target.value)}
                               />
                          </Form.Group>
 
+
                          <Form.Group className="mb-3" controlId="questionSolution">
                              <Form.Label>Question Solution</Form.Label>
                              
-                         
                              <CKEditor
                                  editor ={ClassicEditor}
                                  data={questionSolution}
+                                 onReady ={(editor) => {
+                                    editor.editing.view.change((writer) => {
+                                        writer.setStyle(
+                                            "height",
+                                            "200px",
+                                            editor.editing.view.document.getRoot()
+                                        );
+                                    });
+                                }}
                                  onChange={(e, editor) => {
                                    const data = editor.getData()
                                    setQuestionSolution(data)}
                                  }
                              
                              />
-                           
-                            
-                 
                          </Form.Group>
 
                          
 
                          <Form.Group className='mb-2 mt-2'  aria-label="questionType">
                              <Form.Label>Question Type</Form.Label>
-                             <Form.Control as='select' value={questionType} onChange={(e) => setQuestionType(e.target.value)}>
+                             <Form.Control as='select' required value={questionType} onChange={(e) => setQuestionType(e.target.value)}>
                                  <option value=''>Select...</option>
                                  <option value="beginner">Beginner</option>
                                  <option value="intermediate">Intermediate</option>
@@ -125,7 +139,7 @@ const UpdateInterview = ({ match, history }) => {
 
                          <Form.Group className='mb-2 mt-2'  aria-label="questionLanguage">
                              <Form.Label>Question Language</Form.Label>
-                             <Form.Control as='select' value={questionLanguage} onChange={(e) => setQuestionLanguage(e.target.value)}>
+                             <Form.Control as='select' required value={questionLanguage} onChange={(e) => setQuestionLanguage(e.target.value)}>
                                  <option value=''>Select...</option>
                                  <option value="java">Java</option>
                                  <option value="python">Python</option>

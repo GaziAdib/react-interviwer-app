@@ -25,22 +25,27 @@ const AddInterview = ({ history }) => {
     const CreateInterviewHandler = (event) => {
         event.preventDefault();
 
-        const data  = {
-            questionTitle,
-            questionSolution,
-            questionType,
-            questionLanguage
+        if (questionTitle !== '' && questionSolution !== '' && questionType !== '' && questionLanguage !== '') {
+
+            const data  = {
+                questionTitle,
+                questionSolution,
+                questionType,
+                questionLanguage
+            }
+
+            InterviewService.create(data).then(() => {
+                setSubmitted(true)
+            }).catch(e => {
+                console.log(e)
+            })
+
+            history.push('/')
         }
 
-        InterviewService.create(data).then(() => {
-            setSubmitted(true)
-        }).catch(e => {
-            console.log(e)
-        })
-
-        history.push('/')
         
     };
+
 
 
 
@@ -59,6 +64,7 @@ const AddInterview = ({ history }) => {
                             <Form.Group className="mb-2 py-2 mt-2" controlId="questionTitle">
                                 <Form.Label>Question Title</Form.Label>
                                 <Form.Control
+                                 required
                                  type="text"
                                  value={questionTitle}
                                  onChange={(e) => setQuestionTitle(e.target.value)}
@@ -68,31 +74,38 @@ const AddInterview = ({ history }) => {
                             <Form.Group className="mb-3 py-2 mt-2" controlId="questionSolution">
                                 <Form.Label>Question Solution</Form.Label>
                                 
-                     
-                                <CKEditor
-                                    config={ {
-                                        innerHeight:'400px'
+                               
+                                    <CKEditor
+                                        editor={ClassicEditor}  
+                                        data={questionSolution}
+                                        onReady ={(editor) => {
+                                            editor.editing.view.change((writer) => {
+                                                writer.setStyle(
+                                                    "height",
+                                                    "200px",
+                                                    editor.editing.view.document.getRoot()
+                                                );
+                                            });
+                                        }}
+                                        onChange = {(e, editor) => {
+                                            const data = editor.getData()
+                                            setQuestionSolution(data)
+                                        }}
+                                        onBlur={ ( e, editor ) => {
+                                            console.log( 'Blur.', editor );
                                         } }
-                                    editor={ClassicEditor}
-                                    data={questionSolution}
-                                    onChange = {(e, editor) => {
-                                        const data = editor.getData()
-                                        setQuestionSolution(data)
-                                    }}
-                                    onBlur={ ( e, editor ) => {
-                                        console.log( 'Blur.', editor );
-                                    } }
-                                        
-                                        />
-                  
-
+                                       
+                                            
+                                    />
+                               
+                     
                             </Form.Group>
 
                             
 
                             <Form.Group className='mb-2 mt-2 pt-2'  aria-label="questionType">
                                 <Form.Label>Question Type</Form.Label>
-                                <Form.Control as='select' value={questionType} onChange={(e) => setQuestionType(e.target.value)}>
+                                <Form.Control as='select' required value={questionType} onChange={(e) => setQuestionType(e.target.value)}>
                                     <option value=''>Select...</option>
                                     <option value="beginner">Beginner</option>
                                     <option value="intermediate">Intermediate</option>
@@ -104,7 +117,7 @@ const AddInterview = ({ history }) => {
 
                             <Form.Group className='mb-2 mt-2 pt-2'  aria-label="questionLanguage">
                                 <Form.Label>Question Language</Form.Label>
-                                <Form.Control as='select' value={questionLanguage} onChange={(e) => setQuestionLanguage(e.target.value)}>
+                                <Form.Control as='select' required value={questionLanguage} onChange={(e) => setQuestionLanguage(e.target.value)}>
                                     <option value=''>Select...</option>
                                     <option value="java">Java</option>
                                     <option value="python">Python</option>
