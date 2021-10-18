@@ -11,6 +11,7 @@ import { useParams, useHistory } from 'react-router-dom'
 
 
 
+
 const SolutionDetail = () => {
 
     //{ match, history }
@@ -34,51 +35,54 @@ const SolutionDetail = () => {
 
 
     useEffect(() => {
-            const getDetailSolutionData = async () => {
-                if (key != null) {
-                   await firebase.database().ref('/interviews').child(key).on('value', snapshot => {
-                        
-                        if(snapshot.exists()) {
-
-                            const q_title = snapshot.val().questionTitle
-                            const q_solution = snapshot.val().questionSolution
-                            const q_type = snapshot.val().questionType
-                            const q_language = snapshot.val().questionLanguage
-
-                            // set state value
-                            setQuestionTitle(q_title)
-                            setQuestionSolution(q_solution)
-                            setQuestionType(q_type)
-                            setQuestionLanguage(q_language)
-                            setLoading(false)
-                        }
-
-                     })
-
-                } else {
-                    setQuestionTitle('')
-                    setQuestionSolution('')
-                    setQuestionType('')
-                    setQuestionLanguage('')
-                    setLoading(false)
-                }     
-            }
-
-            getDetailSolutionData()
+            
+         getDetailSolutionData(key)
         
     }, [key])
 
 
+    const getDetailSolutionData = (key) => {
+        if (key != null) {
+            firebase.database().ref('/interviews').child(key).on('value', snapshot => {
+                
+                if(snapshot.exists()) {
+
+                    const q_title = snapshot.val().questionTitle
+                    const q_solution = snapshot.val().questionSolution
+                    const q_type = snapshot.val().questionType
+                    const q_language = snapshot.val().questionLanguage
+
+                    // set state value
+                    setQuestionTitle(q_title)
+                    setQuestionSolution(q_solution)
+                    setQuestionType(q_type)
+                    setQuestionLanguage(q_language)
+                    setLoading(false)
+                }
+
+            
+             })
+
+        } else {
+            setQuestionTitle('')
+            setQuestionSolution('')
+            setQuestionType('')
+            setQuestionLanguage('')
+            setLoading(false)
+        }     
+    }
+
+
 
     // delete Handler
-    const deleteHander = async () => {
+    const deleteHander =   () => {
         const secretPass = 'adib1204'
         if (window.confirm('Are you sure to delete ?')) {
 
             const password = prompt('Enter Password to Delete...')
 
             if(password === secretPass) {
-               await firebase.database().ref('/interviews').child(key).remove().then(() => {
+               firebase.database().ref('/interviews').child(key).remove().then(() => {
                     console.log('removed')
                     history.push('/')
                     setLoading(false)

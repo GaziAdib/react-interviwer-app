@@ -16,7 +16,7 @@ const UpdateInterview = () => {
 
     // redirect after button click
     const history = useHistory();
-    
+
    // console.log(history.location.key, history.location.pathname, history.location.search)
 
     const [questionTitle, setQuestionTitle] = useState('');
@@ -29,19 +29,21 @@ const UpdateInterview = () => {
     useEffect(() => {
         const getEachKeyDetailData = () => {
             firebase.database().ref('/interviews').child(key).on('value', snapshot => {
-                const q_title =  snapshot.val().questionTitle
-                const q_solution =  snapshot.val().questionSolution
-                const q_type =  snapshot.val().questionType
-                const q_language =  snapshot.val().questionLanguage
-
-                // set state value
-
-                setQuestionTitle(q_title)
-                setQuestionSolution(q_solution)
-                setQuestionType(q_type)
-                setQuestionLanguage(q_language)
-                setLoading(false)
-                 
+                if(snapshot.exists()) {
+                    const q_title =  snapshot.val().questionTitle
+                    const q_solution =  snapshot.val().questionSolution
+                    const q_type =  snapshot.val().questionType
+                    const q_language =  snapshot.val().questionLanguage
+    
+                    // set state value
+    
+                    setQuestionTitle(q_title)
+                    setQuestionSolution(q_solution)
+                    setQuestionType(q_type)
+                    setQuestionLanguage(q_language)
+                    setLoading(false)
+                }
+            
              })
         }
 
@@ -52,7 +54,7 @@ const UpdateInterview = () => {
 
 
     // updateHandler On Button click
-    const UpdateInterviewHandler = (e) => {
+    const UpdateInterviewHandler = async  (e) => {
 
         e.preventDefault();
 
@@ -65,7 +67,7 @@ const UpdateInterview = () => {
                 questionLanguage
             }
     
-            InterviewService.update(key, data).then(() => {
+            await InterviewService.update(key, data).then(() => {
                 console.log('updated data')
                 setSubmitted(true);
                 setLoading(false)

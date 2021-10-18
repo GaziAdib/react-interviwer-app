@@ -5,16 +5,15 @@ import SolutionAllCard from '../components/SolutionAllCard'
 import Loader from '../components/Loader'
 
 
-const DetailInterview = () => {
+const ListSolutions = () => {
 
     const [solutions, setSolutions] = useState([])
     const [loading,setLoading] = useState(true);
-    // const [light, setLight] = useState(false);
-    // const [dark, setDark] = useState(false);
-    // const [textColor, setTextColor] = useState('');
-    // const [bgColor, setBgColor] = useState('');
-
     
+    
+    useEffect(() => {
+        getAllSolution()
+    },[])
 
     const onDataChange = (items) => {
         let solutions = []
@@ -36,59 +35,31 @@ const DetailInterview = () => {
         setLoading(false)
     }
 
-  
+    
+    const getAllSolution =  () => {
+         InterviewService.getAll().on("value", onDataChange);
 
-    useEffect(() => {
-        const getAllSolution = () => {
-            InterviewService.getAll().on("value", onDataChange);
+         return function cleanup() {
+            InterviewService.getAll().off("value", onDataChange)
+        }
+    };
 
-            return () => {
-                InterviewService.getAll().off("value", onDataChange)
-            }
-        };
-
-        getAllSolution()
-    },[])
-
-    // const setToDarkMode = () => {
-    //     setDark(true)
-    //     setLight(false)
-    //     if(dark === true) {
-    //         setBgColor('bg-dark')
-    //         setTextColor('text-light')
-    //     }
-    // }
-
-    // const setToLightMode = () => {
-    //     setDark(false)
-    //     setLight(true)
-    //     if(light === true)
-    //         setBgColor('bg-light')
-    //         setTextColor('text-dark')
-    // }
-
-    //className={light ? textColor && bgColor : 'bg-dark text-light'}
-
-   
-
-   
+    
 
 
     return (
         <>
         <Container className='mb-5'>
-            {/* <Button onClick={setToLightMode}>Light</Button>
-            <Button onClick={setToDarkMode}>Dark</Button> */}
-            {/* <h2 className={light ? textColor && bgColor : 'bg-dark text-light'}>text dark and light</h2> */}
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Solutions</h2>
             <hr />
                 {loading && <Loader />}
-                {solutions.map(s => (
+                {solutions.length > 0 ? (solutions.map(s => (
                     <Col md={12} lg={12} sm={12} key={s.key}>
                         <SolutionAllCard  s={s} />
                     </Col>
-                ))}
+                ))): (<h2> No data On Database ! please Add Some Data then come here...<b>Thank You</b> </h2>)}
+               
             </Row>
         </Container>
             
@@ -96,4 +67,4 @@ const DetailInterview = () => {
         </>
     )
 }
-export default DetailInterview
+export default ListSolutions

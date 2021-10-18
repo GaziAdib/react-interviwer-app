@@ -5,13 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 
 // adding CKEDITOR and HTMl Parser
-
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
-
-//html parser
-//import HtmlParser from 'react-html-parser';
-
 
 
 const AddInterview = () => {

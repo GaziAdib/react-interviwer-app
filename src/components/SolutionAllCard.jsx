@@ -9,7 +9,7 @@ const SolutionAllCard = ({ s }) => {
     return (
         <>
         
-            <Card className={'m-2 p-2 rounded shadow-sm'}>
+            <Card className={'m-2 p-2 rounded shadow-sm question-solution-detail-card'}>
                 <Card.Body>
                     <Card.Title>Question: {s.questionTitle}</Card.Title>
                     <Card.Text className='solution-detail-text'>Solution: <br /> <pre className='pre-text'>{HtmlParser(s.questionSolution)}</pre> </Card.Text>
