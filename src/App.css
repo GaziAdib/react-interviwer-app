@@ -189,3 +189,64 @@ footer{
 }
 
 
+.about-container{
+    text-align: center;
+    color: white;
+    background-color: rgb(53, 53, 53) !important;
+    min-height: 80vh !important;
+    border-radius: 10px !important;
+    border-color: azure !important;
+    margin: auto;
+    
+}
+
+.about-container-row {
+    background-color: rgb(37, 37, 37) !important;
+
+}
+
+.about-me-leftbar {
+    text-align: center;
+    align-items: center;
+    background-color: rgba(15, 40, 82, 0.472) !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(110, 68, 224, 0.39) !important;
+    border: 2px dashed rgba(86, 67, 255, 0.733);
+    
+
+}
+
+.about-me-leftbar h2 {
+    font-weight: 350;
+}
+
+.about-me-leftbar p {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 350;
+    color: rgb(136, 199, 255);
+    font-style: italic;
+
+}
+
+
+
+.about-short-desc {
+    text-align: start;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    justify-content: center;
+    font-weight: 380;
+    font-style: italic;
+    font-size: 20px;
+    color: rgba(236, 236, 236, 0.952);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 10px !important;
+    padding-right: 2px !important;
+}
