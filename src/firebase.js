@@ -1,18 +1,18 @@
 // import * as firebase from 'firebase'
 // import "firebase/database"
 import firebase from "firebase/compat/app";
-import "firebase/compat/auth"
 import "firebase/compat/database"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAkBLbRGMUhSTbssWwTM-Y553nG9VePrcY",
-  authDomain: "react-interviwer.firebaseapp.com",
-  projectId: "react-interviwer",
-  storageBucket: "react-interviwer.appspot.com",
-  messagingSenderId: "356865191406",
-  appId: "1:356865191406:web:5b81cc32378ccd5059f2ff",
-  measurementId: "G-EG6G4FZGJC"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: 'https://react-interviwer-default-rtdb.firebaseio.com/',
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
