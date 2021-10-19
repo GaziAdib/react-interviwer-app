@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { jsPDF } from 'jspdf';
 import { useParams, useHistory } from 'react-router-dom'
+import FadeIn from 'react-fade-in';
 
 
 
@@ -148,50 +149,53 @@ const SolutionDetail = () => {
         <>
         {loading ? <Loader /> : (
             <>
-            <Container>
-            <Row className="justify-content-center">
-                <Col md={10} sm={12} lg={12} xs={12}>
-   
-                <Card className='question-solution-detail-card shadow m-5 p-3 rounded'>
-                    <Card.Body>
-                            <Card.Title>Question: {questionTitle}</Card.Title>
-                            <hr />
-                            <p className='solution-detail-text'>Solution: <br /> <pre className='pre-text'>{ HtmlParser(questionSolution) }</pre> </p>
-                            <br />
-                            <span className={questionType === 'intermediate' ? "solution-question-type-intermediate" : "solution-question-type"}>{questionType}</span>
-                            <span className="solution-question-language">{questionLanguage}</span>
-                    </Card.Body>
-                </Card>
-           
-                </Col>
-            </Row>
-
-          
-        </Container>
-
-
-        <Container className="mb-5 text-center">
-        <hr />
-            <Row className='m-2'>
-                <div className="m-2">
-
-               
-                <Link to={`/list/${key}/update`}>
-                    <Button variant="block-outline bg-dark text-light" className='mt-2 ml-2 mr-2 p-2 mb-1'>Update</Button>
-                </Link>
+            <FadeIn delay={2}>
+                    <Container>
+                    <Row className="justify-content-center">
+                        <Col md={10} sm={12} lg={12} xs={12}>
+        
+                        <Card className='question-solution-detail-card shadow m-5 p-3 rounded'>
+                            <Card.Body>
+                                    <Card.Title>Question: {questionTitle}</Card.Title>
+                                    <hr />
+                                    <p className='solution-detail-text'>Solution: <br /> <pre className='pre-text'>{ HtmlParser(questionSolution) }</pre> </p>
+                                    <br />
+                                    <span className={questionType === 'intermediate' ? "solution-question-type-intermediate" : "solution-question-type"}>{questionType}</span>
+                                    <span className="solution-question-language">{questionLanguage}</span>
+                            </Card.Body>
+                        </Card>
                 
+                        </Col>
+                    </Row>
 
-                <Button  className='mt-2 ml-2 mr-2 p-2 mb-1' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button>
                 
-                <Button className='mt-2 ml-2 mr-2 pb-2 mb-1' variant="block-outline text-light bg-success" onClick={pdfHandler}>CovertPDF</Button>
-                            
+                </Container>
 
-                </div>
-                
-             
-            </Row>
 
-        </Container>
+                <Container className="mb-5 text-center">
+                <hr />
+                    <Row className='m-2'>
+                        <div className="m-2">
+
+                    
+                        <Link to={`/list/${key}/update`}>
+                            <Button variant="block-outline bg-dark text-light" className='mt-2 ml-2 mr-2 p-2 mb-1'>Update</Button>
+                        </Link>
+                        
+
+                        <Button  className='mt-2 ml-2 mr-2 p-2 mb-1' variant="block-outline text-light bg-danger" onClick={deleteHander}>Delete</Button>
+                        
+                        <Button className='mt-2 ml-2 mr-2 pb-2 mb-1' variant="block-outline text-light bg-success" onClick={pdfHandler}>CovertPDF</Button>
+                                    
+
+                        </div>
+                        
+                    
+                    </Row>
+
+                </Container>
+            </FadeIn>
+            
             
             </>
         )}

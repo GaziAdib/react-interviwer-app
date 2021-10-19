@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import InterviewService from '../services/InterviewService'
 import SolutionAllCard from '../components/SolutionAllCard'
 import Loader from '../components/Loader'
+import FadeIn from 'react-fade-in';
 
 
 const ListSolutions = () => {
@@ -49,6 +50,7 @@ const ListSolutions = () => {
 
     return (
         <>
+        <FadeIn delay={20}>
         <Container className='mb-5'>
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Solutions</h2>
@@ -62,8 +64,8 @@ const ListSolutions = () => {
                
             </Row>
         </Container>
-            
-
+        </FadeIn>
+        
         </>
     )
 }

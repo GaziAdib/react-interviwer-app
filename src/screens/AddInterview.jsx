@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 
+import FadeIn from 'react-fade-in';
+
 
 const AddInterview = () => {
 
@@ -51,7 +53,8 @@ const AddInterview = () => {
     return <>
        
        {submitted ? <h4>Form Submitted</h4> : (
-            <Container>
+           <FadeIn>
+<Container>
             <h2 className='text-center mt-4 mb-4 text-primary'>Create Interview Question</h2>
             <hr />
             <Row className='justify-content-center'>
@@ -137,6 +140,8 @@ const AddInterview = () => {
             </Row>
 
         </Container>
+           </FadeIn>
+            
        )}
     
     </>

@@ -6,6 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 import Typing from 'react-typing-animation'
+import FadeIn from 'react-fade-in';
 
 
 const AboutMe = () => {
@@ -14,6 +15,7 @@ const AboutMe = () => {
     return (
         <>
 
+        <FadeIn delay={20}>
         <Container style={{ display: 'flex', flexDirection:'column' }} className="about-container mt-3 mb-5">
             <Row className="about-container-row justify-content-center mt-2 mb-3">
                 <h1 className='text-center mt-2 p-2'>About Me</h1>
@@ -24,7 +26,8 @@ const AboutMe = () => {
                     <Typing speed={50}>
                     <div className="about-me-leftbar">
                         <h2>I'am <b>Gazi Adib</b></h2>
-                        <p>Senior React Developer</p>
+                        <p style={{ fontSize: '26px' }}>Software Engineer</p>
+                        <p>Bsc in CSE, <small>Daffodil Internation University</small></p>
                     </div>
                     </Typing>
                    
@@ -83,6 +86,9 @@ const AboutMe = () => {
                 </Col>
             </Row>
         </Container>
+        </FadeIn>
+
+        
             
         </>
     )

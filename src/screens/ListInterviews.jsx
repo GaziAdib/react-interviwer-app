@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import InterviewService from '../services/InterviewService'
 import Loader from '../components/Loader'
 import QuestionCard from '../components/QuestionCard'
+import FadeIn from 'react-fade-in';
 
 const ListInterviews = () => {
 
@@ -19,7 +20,7 @@ const ListInterviews = () => {
 
     const onDataChange =  (items) => {
         let questions = []
-       if(items.exists()) {
+   
             items.forEach((item) => {
                 if(item.key) {
                     let key = item.key;
@@ -31,11 +32,10 @@ const ListInterviews = () => {
                             questionType: data.questionType
                     });
                     // // sort based on question difficulty 
-                    // questions.sort((a, b) => a.questionType - b.questionType ? 1 : -1)
-                    
+                    questions.sort((a, b) => a.key - b.key ? 1 : -1)  
                 }
             });
-       }
+     
         setQuestions(questions);
         setLoading(false)
     }
@@ -53,6 +53,8 @@ const ListInterviews = () => {
 
     return (
         <>
+        
+        <FadeIn>
         <Container className='mb-5'>
             <Row className='justify-content-center'>
             <h2 className='text-center mt-3 mb-3 pd-2 text-primary'>List Interviews Questions</h2>
@@ -67,6 +69,9 @@ const ListInterviews = () => {
                 ))): (<h2> No data On Database ! please Add Some Data then come here...<b>Thank You</b> </h2>)}
             </Row>
         </Container>
+        </FadeIn>
+
+        
             
 
         </>
