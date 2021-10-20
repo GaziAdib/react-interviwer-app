@@ -150,11 +150,11 @@ const SolutionDetail = () => {
         {loading ? <Loader /> : (
             <>
             <FadeIn delay={2}>
-                    <Container>
+                    <Container className='justify-content-center'>
                     <Row className="justify-content-center">
-                        <Col md={10} sm={12} lg={12} xs={12}>
+                        <Col md={10} sm={12} lg={12} xs={11}>
         
-                        <Card className='question-solution-detail-card shadow m-5 p-3 rounded'>
+                        <Card className='question-solution-detail-card shadow mt-4 mb-2 p-2 rounded'>
                             <Card.Body>
                                     <Card.Title>Question: {questionTitle}</Card.Title>
                                     <hr />

@@ -56,8 +56,9 @@
 }
 
 .question-solution-detail-card {
-    width: 90% !important;
     border-left: 3px solid green !important;
+    text-align: start;
+    justify-content: center;
 }
 
 

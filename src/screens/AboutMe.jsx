@@ -27,7 +27,7 @@ const AboutMe = () => {
                     <div className="about-me-leftbar">
                         <h2>I'am <b>Gazi Adib</b></h2>
                         <p style={{ fontSize: '26px' }}>Software Engineer</p>
-                        <p>Bsc in CSE, <small>Daffodil Internation University</small></p>
+                        <p>Bsc in CSE, <small>Daffodil International University</small></p>
                     </div>
                     </Typing>
                    
